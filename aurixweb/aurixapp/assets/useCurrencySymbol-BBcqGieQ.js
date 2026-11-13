@@ -1,0 +1,1 @@
+import{r as t}from"./vendor-react-DJmB44jd.js";import{P as r}from"./index-BcLIFqni.js";const i=()=>{const[n,o]=t.useState(()=>r());return t.useEffect(()=>{const e=()=>o(r());return window.addEventListener("regionalSettingsChanged",e),()=>window.removeEventListener("regionalSettingsChanged",e)},[]),n};export{i as u};

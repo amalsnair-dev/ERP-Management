@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "gift-master-full-package-v1",
+		"name": "🎁 Gift Master API - Full Package",
+		"description": "Complete REST API Collection for Gift Master module in Aurix Web API.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "⚡ 1. Fast Table Lookup (giftCode & giftName only)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{ "key": "username", "value": "{{username}}" },
+					{ "key": "password", "value": "{{password}}" }
+				],
+				"url": {
+					"raw": "{{baseUrl}}/giftmaster/lookup?shopcode={{shopcode}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["giftmaster", "lookup"],
+					"query": [
+						{ "key": "shopcode", "value": "{{shopcode}}" }
+					]
+				}
+			}
+		},
+		{
+			"name": "➕ 2. Save Gift (Add New)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{ "key": "username", "value": "{{username}}" },
+					{ "key": "password", "value": "{{password}}" },
+					{ "key": "Content-Type", "value": "application/json" }
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"giftId\": null,\n  \"giftCode\": \"GIFT001\",\n  \"giftName\": \"Gold Coin 1g\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/giftmaster/save?shopcode={{shopcode}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["giftmaster", "save"],
+					"query": [
+						{ "key": "shopcode", "value": "{{shopcode}}" }
+					]
+				}
+			}
+		},
+		{
+			"name": "📋 3. Get All Gifts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{ "key": "username", "value": "{{username}}" },
+					{ "key": "password", "value": "{{password}}" }
+				],
+				"url": {
+					"raw": "{{baseUrl}}/giftmaster/all?shopcode={{shopcode}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["giftmaster", "all"],
+					"query": [
+						{ "key": "shopcode", "value": "{{shopcode}}" }
+					]
+				}
+			}
+		},
+		{
+			"name": "🔍 4. Get Gift By Code",
+			"request": {
+				"method": "GET",
+				"header": [
+					{ "key": "username", "value": "{{username}}" },
+					{ "key": "password", "value": "{{password}}" }
+				],
+				"url": {
+					"raw": "{{baseUrl}}/giftmaster/getByCode?giftCode=GIFT001&shopcode={{shopcode}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["giftmaster", "getByCode"],
+					"query": [
+						{ "key": "giftCode", "value": "GIFT001" },
+						{ "key": "shopcode", "value": "{{shopcode}}" }
+					]
+				}
+			}
+		},
+		{
+			"name": "🔍 5. Get Gift By ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{ "key": "username", "value": "{{username}}" },
+					{ "key": "password", "value": "{{password}}" }
+				],
+				"url": {
+					"raw": "{{baseUrl}}/giftmaster/getById?giftId=1&shopcode={{shopcode}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["giftmaster", "getById"],
+					"query": [
+						{ "key": "giftId", "value": "1" },
+						{ "key": "shopcode", "value": "{{shopcode}}" }
+					]
+				}
+			}
+		},
+		{
+			"name": "✏️ 6. Update Gift",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{ "key": "username", "value": "{{username}}" },
+					{ "key": "password", "value": "{{password}}" },
+					{ "key": "Content-Type", "value": "application/json" }
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"giftId\": 1,\n  \"giftCode\": \"GIFT001\",\n  \"giftName\": \"Gold Coin 2g\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/giftmaster/update?shopcode={{shopcode}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["giftmaster", "update"],
+					"query": [
+						{ "key": "shopcode", "value": "{{shopcode}}" }
+					]
+				}
+			}
+		},
+		{
+			"name": "🗑️ 7. Delete Gift",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{ "key": "username", "value": "{{username}}" },
+					{ "key": "password", "value": "{{password}}" }
+				],
+				"url": {
+					"raw": "{{baseUrl}}/giftmaster/delete?giftId=1&shopcode={{shopcode}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["giftmaster", "delete"],
+					"query": [
+						{ "key": "giftId", "value": "1" },
+						{ "key": "shopcode", "value": "{{shopcode}}" }
+					]
+				}
+			}
+		},
+		{
+			"name": "✅ 8. Check Exists By Code",
+			"request": {
+				"method": "GET",
+				"header": [
+					{ "key": "username", "value": "{{username}}" },
+					{ "key": "password", "value": "{{password}}" }
+				],
+				"url": {
+					"raw": "{{baseUrl}}/giftmaster/existsByCode?giftCode=GIFT001&shopcode={{shopcode}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["giftmaster", "existsByCode"],
+					"query": [
+						{ "key": "giftCode", "value": "GIFT001" },
+						{ "key": "shopcode", "value": "{{shopcode}}" }
+					]
+				}
+			}
+		},
+		{
+			"name": "🔨 9. Create Table Manually",
+			"request": {
+				"method": "POST",
+				"header": [
+					{ "key": "username", "value": "{{username}}" },
+					{ "key": "password", "value": "{{password}}" }
+				],
+				"url": {
+					"raw": "{{baseUrl}}/giftmaster/create-table?shopcode={{shopcode}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["giftmaster", "create-table"],
+					"query": [
+						{ "key": "shopcode", "value": "{{shopcode}}" }
+					]
+				}
+			}
+		}
+	],
+	"variable": [
+		{ "key": "baseUrl", "value": "http://localhost:8080", "type": "string" },
+		{ "key": "username", "value": "BLOGTEC", "type": "string" },
+		{ "key": "password", "value": "1234", "type": "string" },
+		{ "key": "shopcode", "value": "TCR", "type": "string" }
+	]
+}

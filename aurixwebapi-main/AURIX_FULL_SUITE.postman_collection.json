@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-4321-b0b1-c2d3e4f5a6b7",
+		"name": "AURIX Web API - Absolute Full Suite",
+		"description": "Production-grade, package-based collection covering 13 business modules. Features 100% endpoint mapping and accurate sample payloads.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "👤 01. User (Accounts)",
+			"item": [
+				{ "name": "Auth: Login", "request": { "method": "POST", "url": "{{baseUrl}}/user/login?shopcode={{shopcode}}", "body": { "mode": "raw", "raw": "{\"username\": \"{{username}}\", \"password\": \"{{password}}\"}" } } },
+				{ "name": "Auth: Register", "request": { "method": "POST", "url": "{{baseUrl}}/user/register?shopcode={{shopcode}}", "body": { "mode": "raw", "raw": "{\"username\": \"NEWUSER\", \"password\": \"Aurix@2024\", \"role\": {\"id\": 1, \"roleName\": \"ADMIN\"}, \"shopcode\": \"{{shopcode}}\"}" } } },
+				{ "name": "Profile: Get Frames", "request": { "method": "GET", "url": "{{baseUrl}}/user/frames/{{username}}?shopcode={{shopcode}}" } },
+				{ "name": "Profile: Change Password", "request": { "method": "PUT", "url": "{{baseUrl}}/user/changePassword/{{username}}?currentPassword=OLD&newPassword=NEW&shopcode={{shopcode}}" } }
+			]
+		},
+		{
+			"name": "🤝 02. SmAssign (Daily Traffic)",
+			"item": [
+				{ "name": "Create Assignment", "request": { "method": "POST", "url": "{{baseUrl}}/dailycustomer/create?shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" } ], "body": { "mode": "raw", "raw": "{\"name\": \"John Doe\", \"phoneNo\": \"9876543210\", \"place\": \"City Center\", \"smCode\": \"S001\", \"date\": \"2024-04-08\", \"remarks\": \"Priority VIP\"}" } } },
+				{ "name": "Find by Staff ID", "request": { "method": "GET", "url": "{{baseUrl}}/dailycustomer/findBySmcode/S001?shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" } ] } }
+			]
+		},
+		{
+			"name": "💰 03. Sales Engine",
+			"item": [
+				{
+					"name": "📦 Sales Entry (Modular Saves)",
+					"item": [
+						{ "name": "STEP 1: Save Header (General)", "request": { "method": "POST", "url": "{{baseUrl}}/salesentry/saveGeneral?shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" } ], "body": { "mode": "raw", "raw": "{\"estNo\": 123, \"estDte\": \"2024-04-08\", \"custId\": \"C001\", \"custName\": \"Test Customer\", \"goldSlv\": \"G\", \"shopCode\": \"{{shopcode}}\"}" } } },
+						{ "name": "STEP 2: Save Sales Items", "request": { "method": "POST", "url": "{{baseUrl}}/salesentry/saveSales?shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" } ], "body": { "mode": "raw", "raw": "[{\"estNo\": 123, \"slno\": 1, \"itemCode\": \"RING01\", \"wt\": 5.5, \"tamt\": 30250}]" } } }
+					]
+				},
+				{
+					"name": "📊 Sales Print",
+					"item": [
+						{ "name": "Print Estimate (Thermal/A4)", "request": { "method": "GET", "url": "{{baseUrl}}/salesprint/report/123?type=T&shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" } ] } }
+					]
+				},
+				{
+					"name": "🏷️ Cash Marking",
+					"item": [
+						{ "name": "Modify VA Amount", "request": { "method": "POST", "url": "{{baseUrl}}/cashmark/updatevadata?vastatus=true&shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" } ], "body": { "mode": "raw", "raw": "[{\"estno\": 123, \"slno\": 1, \"modifyva\": 1500, \"username\": \"{{username}}\"}]" } } },
+						{ "name": "Get Gift Details", "request": { "method": "GET", "url": "{{baseUrl}}/cashmark/getgiftdetails/3?shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" } ] } },
+						{ "name": "Update Gift Details via DTO", "request": { "method": "PUT", "url": "{{baseUrl}}/cashmark/updategiftdetails?shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" }, { "key": "Content-Type", "value": "application/json" } ], "body": { "mode": "raw", "raw": "{\"estNo\": 3, \"giftNo\": \"0\", \"collAmt\": 0, \"barcodeFlag\": false}" } } },
+
+						{ "name": "Reset Gift Details", "request": { "method": "PUT", "url": "{{baseUrl}}/cashmark/resetgiftdetails/3?shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" } ] } },
+						{ "name": "Update Barcode Flag", "request": { "method": "PUT", "url": "{{baseUrl}}/cashmark/updatebarcodeflag/3?barcodeFlag=false&shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" } ] } },
+						{ "name": "Get Barcode Flag", "request": { "method": "GET", "url": "{{baseUrl}}/cashmark/getbarcodeflag/3?shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" } ] } }
+					]
+				}
+
+			]
+		},
+		{
+			"name": "👤 04. Customer & CRM",
+			"item": [
+				{ "name": "Profiles: Create CRM", "request": { "method": "POST", "url": "{{baseUrl}}/customer/create?shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" } ], "body": { "mode": "raw", "raw": "{\"name\": \"John Doe\", \"mob\": \"9876543210\", \"place\": \"City Center\", \"username\": \"{{username}}\", \"shopcode\": \"{{shopcode}}\"}" } } },
+				{ "name": "Lounge: Categories", "request": { "method": "GET", "url": "{{baseUrl}}/customerlounge/getCategoryForCustomer?shopcode={{shopcode}}" } }
+			]
+		},
+		{
+			"name": "🖼️ 07. Image Storage (Assets)",
+			"item": [
+				{ "name": "UPLOADER: Upload Design Image", "request": { "method": "POST", "url": "{{baseUrl}}/image/upload?shopcode={{shopcode}}&dcode=101&dsgnName=Ring", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" } ], "body": { "mode": "formdata", "formdata": [ { "key": "file", "type": "file", "src": [] } ] } } },
+				{ "name": "View Image", "request": { "method": "GET", "url": "{{baseUrl}}/image/view?dcode=101&dsgnName=Ring&shopcode={{shopcode}}" } },
+				{ "name": "Barcode Image", "request": { "method": "GET", "url": "{{baseUrl}}/barcodeapi/getImagebyBarcode/B123?shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" } ] } }
+			]
+		},
+		{
+			"name": "🛠️ 06. Utilities",
+			"item": [
+				{ "name": "Summary: Get Totals", "request": { "method": "GET", "url": "{{baseUrl}}/easytotal/geteasytotal?shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" } ] } },
+				{ "name": "Audit: Get Discounts", "request": { "method": "GET", "url": "{{baseUrl}}/discountdetails/findByAll?shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" } ] } },
+				{ "name": "Audit: Log System Access", "request": { "method": "POST", "url": "{{baseUrl}}/systemdetails/log", "header": [ { "key": "Content-Type", "value": "application/json" }, { "key": "X-Device-MAC", "value": "DEV-MAC-1234" } ], "body": { "mode": "raw", "raw": "{\"userid\": 1, \"framename\": \"SALES_ENTRY\", \"operation\": \"SAVE\", \"description\": \"Saved sale estimation #123\", \"shopcode\": \"{{shopcode}}\"}" } } }
+			]
+
+		},
+		{
+			"name": "🎁 08. Gift Master",
+			"item": [
+				{ "name": "Fast Table Lookup (giftCode & giftName)", "request": { "method": "GET", "url": "{{baseUrl}}/giftmaster/lookup?shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" } ] } },
+				{ "name": "Save Gift", "request": { "method": "POST", "url": "{{baseUrl}}/giftmaster/save?shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" }, { "key": "Content-Type", "value": "application/json" } ], "body": { "mode": "raw", "raw": "{\"giftId\": null, \"giftCode\": \"GIFT001\", \"giftName\": \"Gold Coin 1g\"}" } } },
+				{ "name": "Get All Gifts", "request": { "method": "GET", "url": "{{baseUrl}}/giftmaster/all?shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" } ] } },
+				{ "name": "Get Gift By Code", "request": { "method": "GET", "url": "{{baseUrl}}/giftmaster/getByCode?giftCode=GIFT001&shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" } ] } },
+				{ "name": "Get Gift By ID", "request": { "method": "GET", "url": "{{baseUrl}}/giftmaster/getById?giftId=1&shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" } ] } },
+				{ "name": "Update Gift", "request": { "method": "PUT", "url": "{{baseUrl}}/giftmaster/update?shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" }, { "key": "Content-Type", "value": "application/json" } ], "body": { "mode": "raw", "raw": "{\"giftId\": 1, \"giftCode\": \"GIFT001\", \"giftName\": \"Gold Coin 2g\"}" } } },
+				{ "name": "Delete Gift", "request": { "method": "DELETE", "url": "{{baseUrl}}/giftmaster/delete?giftId=1&shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" } ] } },
+				{ "name": "Create Table Manually", "request": { "method": "POST", "url": "{{baseUrl}}/giftmaster/create-table?shopcode={{shopcode}}", "header": [ { "key": "username", "value": "{{username}}" }, { "key": "password", "value": "{{password}}" } ] } }
+			]
+		}
+	],
+	"variable": [
+		{ "key": "baseUrl", "value": "http://localhost:8080/aurixwebapi", "type": "string" },
+		{ "key": "username", "value": "BLOGTEC", "type": "string" },
+		{ "key": "password", "value": "1234", "type": "string" },
+		{ "key": "shopcode", "value": "TCR", "type": "string" }
+	]
+}

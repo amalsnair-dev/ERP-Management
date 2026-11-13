@@ -1,0 +1,7 @@
+[
+  { "role": "ROLE_DEV" },
+  { "role": "ROLE_SUPERADMIN" },
+  { "role": "ROLE_SUPERUSER" },
+  { "role": "ROLE_ADMIN" },
+  { "role": "ROLE_USER" }
+]
