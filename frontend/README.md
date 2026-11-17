@@ -1,6 +1,6 @@
-# Aurix Frontend
+# Frontend
 
-Aurix Frontend is a React + Vite application for the Aurix business workflow. It runs under the `/aurixapp/` base path, talks to the Aurix backend through Axios, and can be packaged as `aurixapp.war` for Tomcat deployment.
+Frontend is a React + Vite application for the business workflow. It runs under the `/aurixapp/` base path, talks to the backend through Axios, and can be packaged as `aurixapp.war` for Tomcat deployment.
 
 ## What This App Includes
 
