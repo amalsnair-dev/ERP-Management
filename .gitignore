@@ -1,0 +1,38 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Node / frontend
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+coverage/
+.vite/
+playwright-report/
+test-results/
+*.log
+
+# Java / backend
+target/
+**/target/
+.classpath
+.project
+.settings/
+*.class
+
+# IDE
+.vscode/
+.idea/
+
+# Environment files
+.env
+.env.*
+
+# Generated files
+*.tmp
+*.bak
+
+# Optional build output
+build/
+**/build/
